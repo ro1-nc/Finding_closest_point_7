@@ -1,0 +1,6 @@
+D:\Geometry Assignments\Finding_Closest_Pt_7\bin\Debug\Finding_Closest_Pt_7.exe.config
+D:\Geometry Assignments\Finding_Closest_Pt_7\bin\Debug\Finding_Closest_Pt_7.exe
+D:\Geometry Assignments\Finding_Closest_Pt_7\bin\Debug\Finding_Closest_Pt_7.pdb
+D:\Geometry Assignments\Finding_Closest_Pt_7\obj\Debug\Finding_Closest_Pt_7.csproj.CoreCompileInputs.cache
+D:\Geometry Assignments\Finding_Closest_Pt_7\obj\Debug\Finding_Closest_Pt_7.exe
+D:\Geometry Assignments\Finding_Closest_Pt_7\obj\Debug\Finding_Closest_Pt_7.pdb
