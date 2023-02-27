@@ -17,7 +17,6 @@ namespace Finding_Closest_Pt_7
             public static string Closest_Point(double[] s1, double[] e1, List<double> collection_of_pts)
             {
                 //standard form coefficinets
-
                 double A1 = e1[1] - s1[1];
                 double B1 = -(e1[0] - s1[0]);
                 double C1 = -(s1[0] * e1[1] - s1[1] * e1[0]);
@@ -29,12 +28,56 @@ namespace Finding_Closest_Pt_7
 
                 user_pt[0] = collection_of_pts[0];
                 user_pt[1] = collection_of_pts[1];
+
+                //for getting co-ordinates
+                double main_dist = (A1 * collection_of_pts[0] + B1 * collection_of_pts[1] + C1) / Math.Sqrt(A1 * A1 + B1 * B1);
+
                 distane = Math.Abs(A1 * collection_of_pts[0] + B1 * collection_of_pts[1] + C1) / Math.Sqrt(A1 * A1 + B1 * B1);
+
+                //for calculating co-ordinates on given line
+                double x2 = collection_of_pts[0] - (A1 * main_dist);
+                double y2 = collection_of_pts[1] - (B1 * main_dist);
+
+                //for checking if point lies on line segment
+                double seg_length = Math.Sqrt(Math.Pow(e1[0] - s1[0], 2) + Math.Pow(e1[1] - s1[1], 2));
+                double pt_start = Math.Sqrt(Math.Pow(x2 - s1[0], 2) + Math.Pow(y2 - s1[1], 2));
+                double pt_end = Math.Sqrt(Math.Pow(x2 - e1[0], 2) + Math.Pow(y2 - e1[1], 2));
+
+                //for checking shirtest dist from given segment
+                if(seg_length!=pt_start+pt_end)
+                {
+                     pt_start = Math.Sqrt(Math.Pow(collection_of_pts[0] - s1[0], 2) + Math.Pow(collection_of_pts[1] - s1[1], 2));
+                     pt_end = Math.Sqrt(Math.Pow(collection_of_pts[0] - e1[0], 2) + Math.Pow(collection_of_pts[1] - e1[1], 2));
+                    distane = Math.Min(pt_start, pt_end);
+                    // distane=Math.Min()
+                }
+
 
                 for (int i = 2; i < collection_of_pts.Count; i += 2)
                 {
-
+                    //for getting co-ordinates
+                    main_dist = (A1 * collection_of_pts[i] + B1 * collection_of_pts[i+1] + C1) / Math.Sqrt(A1 * A1 + B1 * B1);
                     temp_dist = Math.Abs(A1 * collection_of_pts[i] + B1 * collection_of_pts[i + 1] + C1) / Math.Sqrt(A1 * A1 + B1 * B1);
+
+                    //for calculating co-ordinates on given line
+                     x2 = collection_of_pts[i] - (A1 * main_dist);
+                     y2 = collection_of_pts[i+1] - (B1 * main_dist);
+
+                    //for checking if point lies on line segment
+                     seg_length = Math.Sqrt(Math.Pow(e1[0] - s1[0], 2) + Math.Pow(e1[1] - s1[1], 2));
+                     pt_start = Math.Sqrt(Math.Pow(x2 - s1[0], 2) + Math.Pow(y2 - s1[1], 2));
+                     pt_end = Math.Sqrt(Math.Pow(x2 - e1[0], 2) + Math.Pow(y2 - e1[1], 2));
+
+                    //for checking shirtest dist from given segment
+                    if (seg_length != pt_start + pt_end)
+                    {
+                        pt_start = Math.Sqrt(Math.Pow(collection_of_pts[i] - s1[0], 2) + Math.Pow(collection_of_pts[i+1] - s1[1], 2));
+                        pt_end = Math.Sqrt(Math.Pow(collection_of_pts[i] - e1[0], 2) + Math.Pow(collection_of_pts[i+1] - e1[1], 2));
+                        temp_dist = Math.Min(pt_start, pt_end);
+                        
+                    }
+
+
                     if (temp_dist < distane)
                     {
                         user_pt[0] = collection_of_pts[i];
@@ -55,7 +98,7 @@ namespace Finding_Closest_Pt_7
                 //double x = (B1 * C2 - B2 * C1) / (B2 * A1 - B1 * A2);
                 //double y = (C1 * A2 - C2 * A1) / (B2 * A1 - B1 * A2);
 
-                return "Coordinates of point which is closer to line is " + user_pt[0] + " , " + user_pt[1];
+                return "Coordinates of point which is closer to given line segment is " + user_pt[0] + " , " + user_pt[1]+" and its distance is "+ distane;
             }
         }
         static void Main(string[] args)
@@ -68,7 +111,7 @@ namespace Finding_Closest_Pt_7
             int no_of_points = Convert.ToInt16(Console.ReadLine());
             Console.WriteLine("Enter x and y co-ordinates of points");
             List<double> collection_of_pts = new List<double>();
-            for (int i=0; i<no_of_points*2;i++)
+            for (int i = 0; i < no_of_points * 2; i++)
             {
                 collection_of_pts.Add(Convert.ToDouble(Console.ReadLine()));
             }
