@@ -29,8 +29,8 @@ namespace Finding_Closest_Pt_7
                 double C2 = -(B2 * collection_of_pts[1] - A2 * collection_of_pts[0]);
 
                 //standard form coefficinets
-                double x = (B2 * C1 - B1 * C2) / (B2 * A1 - B1 * A2);
-                double y = (C1 * A2 - C2 * A1) / (B2 * A1 - B1 * A2);
+                //double x = (B2 * C1 - B1 * C2) / (B2 * A1 - B1 * A2);
+                //double y = (C1 * A2 - C2 * A1) / (B2 * A1 - B1 * A2);
 
                 double[] user_pt = new double[2];
                 double[] temp = new double[2];
